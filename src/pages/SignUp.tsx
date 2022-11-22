@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { FieldValues, useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Input } from '../components/Input'
@@ -7,9 +8,6 @@ import { InputVer } from '../components/InputVer'
 import { Text } from '../components/Text'
 import { Title } from '../components/Title'
 import { useGetCurrentUser } from '../hooks/useGetCurrentUser'
-
-
-
 
 export function SignUp() {
   const navigate = useNavigate()
@@ -19,6 +17,8 @@ export function SignUp() {
     navigate(`/profile/${getUser.user.name}`)
   }
 
+  const {register, handleSubmit} = useForm()
+
   const [form, setForm] = useState({
     email: '',
     name: '',
@@ -27,12 +27,12 @@ export function SignUp() {
   const [isValid, setIsValid] = useState(false)
   console.log(form)
 
-  function handleSubmit(event :React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+  function submitApi(data: FieldValues) {
+    console.log(data)
     axios.post('http://localhost:3000/signup', {
-      email: form.email,
-      name: form.name,
-      password: form.password
+      email: data.email,
+      name: data.name,
+      password: data.password
     }).then(res => {
       localStorage.setItem('user', JSON.stringify(res.data))
       console.log(res)
@@ -74,16 +74,15 @@ export function SignUp() {
               </Text>
             </div>
           </div>
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={handleSubmit(submitApi)}>
             <label className='flex flex-col gap-3 mb-10'>
               <Text>Enter your username</Text>
 
               <Input
+                register={register}
                 name='name'
                 placeholder='Username' 
                 type={'text'}
-                value={form.name}
-                onChange={(e) => handleFormChange(e)}
               />
               {/* {form.name && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.name} type='name' />} */}
 
@@ -92,11 +91,10 @@ export function SignUp() {
               <Text>Enter your email address</Text>
 
               <Input
+                register={register}
                 name='email'
                 placeholder='Email address' 
                 type={'email'}
-                value={form.email}
-                onChange={(e) => handleFormChange(e)}
               />
               {form.email && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.email} type='email' />}
 
@@ -106,11 +104,10 @@ export function SignUp() {
                 <Text>Enter your password</Text>
 
                 <Input
+                  register={register}
                   name='password'
                   placeholder='Password' 
                   type={'password'} 
-                  value={form.password}
-                  onChange={(e) => handleFormChange(e)}
                 />
                 {form.password && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.password} type='password' />}
 
