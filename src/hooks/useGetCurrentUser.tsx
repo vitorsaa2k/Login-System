@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export function useGetCurrentUser() {
   const [user, setUser] = useState({
+    status: '',
     user: {
       name: '',
       email: '',

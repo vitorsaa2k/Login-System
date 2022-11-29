@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios"
 import { useEffect, useState } from "react"
-import { createPortal } from "react-dom"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button } from "../components/Button"
 import { Input } from "../components/Input"
@@ -23,6 +22,7 @@ export function Profile() {
   const [isChanging, setIsChanging] = useState(false)
   const [image, setImage] = useState<string | Blob>('')
   const [response, setResponse] = useState<AxiosResponse<any, any>>()
+  const navigate = useNavigate()
 
   const [userState, setUserState] = useState<User>({
     email: '',
@@ -35,9 +35,13 @@ export function Profile() {
   
   useEffect(() => {
     axios.get(`http://localhost:3000/profile/${user}`).then((response) => {
-      setUserState(response.data)
+      setUserState(response.data.user)
+      localStorage.setItem('user', JSON.stringify(response.data))
+      setResponse(response)
     })
   }, [])
+
+  console.log(userState)
 
   function handleFormChange(event: React.FormEvent<HTMLInputElement>) {
     const {name, value} = event.currentTarget
@@ -69,8 +73,6 @@ export function Profile() {
     setIsChanging(false)
   }
 
-  const popUps = document.getElementById('pop-ups')!
-  popUps.classList.add('absolute')
   console.log(response)
 
   if(response != undefined) {
@@ -90,7 +92,7 @@ export function Profile() {
             <img src=''/>
             <div>
               <Title>Email:</Title>
-              <Text> {userState.email}</Text>
+              <Text> {userState ? userState.email : ''}</Text>
             </div>
             {
               isChanging ? (
@@ -100,7 +102,7 @@ export function Profile() {
                     <Input 
                       name="description"
                       placeholder="Change your description"
-                      value={userState.description}
+                      value={userState?.description}
                       type={'text'} 
                       onChange={(e) => handleFormChange(e)} />
                       <div className="flex gap-1">
@@ -112,12 +114,12 @@ export function Profile() {
               ) : (
                 <div className="">
                   <Title>Description: </Title>
-                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{userState.description}</button>
+                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{userState ? userState.description : ''}</button>
                 </div>
               )
             }
           </section>
-          {response?.data.status === "SUCCESS" && <SUCCESS response={response?.data.message} />  }
+          {response?.data.status === "SUCCESS" && <SUCCESS response={response?.data.message} />}
           {response?.data.status === "FAILED" && <FAILED response={response?.data.message} />}
       </div>
     </div>

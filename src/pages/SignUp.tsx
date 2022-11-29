@@ -19,13 +19,7 @@ export function SignUp() {
 
   const {register, handleSubmit} = useForm()
 
-  const [form, setForm] = useState({
-    email: '',
-    name: '',
-    password: '',
-  })
-  const [isValid, setIsValid] = useState(false)
-  console.log(form)
+  const [isValid, setIsValid] = useState(true)
 
   function submitApi(data: FieldValues) {
     console.log(data)
@@ -36,17 +30,8 @@ export function SignUp() {
     }).then(res => {
       localStorage.setItem('user', JSON.stringify(res.data))
       console.log(res)
-      navigate(`/profile/${form.name}`)
+      navigate(`/profile/${data.name}`)
     }).catch(err => console.log(err))
-  }
-
-  function handleFormChange(event: React.FormEvent<HTMLInputElement>) {
-    const {name, value} = event.currentTarget
-    setForm((prevForm) => (
-      {
-      ...prevForm,
-      [name] : value
-      }))
   }
 
   function setIsValidFalse() {
@@ -96,7 +81,7 @@ export function SignUp() {
                 placeholder='Email address' 
                 type={'email'}
               />
-              {form.email && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.email} type='email' />}
+              {/* {form.email && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.email} type='email' />} */}
 
             </label>
             <div className='flex flex-col mb-12'>
@@ -109,7 +94,7 @@ export function SignUp() {
                   placeholder='Password' 
                   type={'password'} 
                 />
-                {form.password && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.password} type='password' />}
+                {/* {form.password && <InputVer setFalse={setIsValidFalse} setTrue={setIsValidTrue} input={form.password} type='password' />} */}
 
               </label>
             </div>
