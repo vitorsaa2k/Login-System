@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useGetCurrentUser } from "../../hooks/useGetCurrentUser"
 import {IoIosArrowDown} from 'react-icons/io'
 import { Button } from "../Button"
@@ -19,7 +19,7 @@ export function UserProfile() {
   return (
     <div>
       <div 
-      className="p-2 bg-slate-300 flex items-center hover:cursor-pointer"
+      className="p-2 rounded bg-slate-300 flex items-center hover:cursor-pointer"
       onClick={flipState}
       >
         <div >{getUser.status == 'SUCCESS' ? getUser?.user?.name : user}</div>
@@ -55,7 +55,7 @@ function DetailedUser() {
 
   return (
     <div className="absolute right-0 top-3 m-7 p-2 bg-white">
-      <div className="flex items-center">
+      <div className="flex items-center gap-2">
       <Button onClick={logOut}>LogOut</Button>
       <Button isRed onClick={deleteAccount}>Delete</Button>
       </div>
