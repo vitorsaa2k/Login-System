@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useGetCurrentUser } from "../../hooks/useGetCurrentUser"
 import {IoIosArrowDown} from 'react-icons/io'
 import { Button } from "../Button"
@@ -38,14 +38,19 @@ export function UserProfile() {
   )
 }
 
+
 function DetailedUser() {
   const getUser = useGetCurrentUser()
   const navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false)
 
   function logOut() {
     localStorage.clear()
     navigate('/')
   }
+  useEffect(() => {
+      setIsOpen(true)
+  })
 
   function deleteAccount() {
     axios.delete(`http://localhost:3000/profile/${getUser.user.name.length ? getUser.user.name : ''}`)
@@ -54,7 +59,7 @@ function DetailedUser() {
   }
 
   return (
-    <div className="absolute right-0 top-3 m-7 p-2 bg-white">
+    <div className={`${isOpen ? 'absolute rounded right-0 top-3 mt-10 mr-7 p-2 bg-white transition opacity-100 duration-300 ease-in-out' : 'transition opacity-0 duration-300 ease-in-out absolute rounded right-0 top-3 mt-10 mr-7 p-2 bg-white'}`}>
       <div className="flex items-center gap-2">
       <Button onClick={logOut}>LogOut</Button>
       <Button isRed onClick={deleteAccount}>Delete</Button>
