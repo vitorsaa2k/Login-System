@@ -1,6 +1,6 @@
 # Login-Client
 
-## Technologies used:
+## Technologies used
 - React
 - React Router
 - Custom React Hooks
