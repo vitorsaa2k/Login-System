@@ -50,7 +50,7 @@ function DetailedUser() {
   }
   useEffect(() => {
       setIsOpen(true)
-  })
+  }, [])
 
   function deleteAccount() {
     axios.delete(`http://localhost:3000/profile/${getUser.user.name.length ? getUser.user.name : ''}`)

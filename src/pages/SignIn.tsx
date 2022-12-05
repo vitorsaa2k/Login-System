@@ -48,7 +48,7 @@ export function SignIn() {
 
   return (
     <div className='bg-my-blue-500 w-screen h-screen flex justify-center items-center'>
-      <div className='w-[539px] h-[741px] bg-white rounded-[40px]'>
+      <div className='p-3 bg-white rounded-[40px]'>
         <div className='flex flex-col px-11 gap-4'>
           <div className='flex items-center pt-12 justify-between'>
             <div className='flex flex-col'>
@@ -62,14 +62,14 @@ export function SignIn() {
               </Text>
             </div>
           </div>
-          <div className='flex justify-between py-12'>
+          <div className='sm:gap-2 flex justify-between py-12'>
             <button className='bg-[#E9F1FF] py-2 px-9 flex justify-start items-center gap-5 rounded-[9px]'>
               <GoogleLogo />
-              <Text size='md' className='font-normal text-my-blue-500'>Google</Text>
+              <Text size='md' className='hidden sm:block font-normal text-my-blue-500'>Google</Text>
             </button>
             <button className='bg-[#E9F1FF] py-2 px-9 flex justify-start items-center gap-5 rounded-[9px]'>
               <FacebookLogo />
-              <Text size='md' className='font-normal text-my-blue-500'>Facebook</Text>
+              <Text size='md' className='hidden sm:block font-normal text-my-blue-500'>Facebook</Text>
             </button>
           </div>
           <form onSubmit={handleSubmit(submitApi)}>
