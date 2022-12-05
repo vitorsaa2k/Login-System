@@ -59,6 +59,9 @@ export function Profile() {
   function submitApi(data: FieldValues) {
     axios.put(`http://localhost:3000/profile/${user}`, data).then((res) => {
       setResponse(res)
+      if(res.data.status === "SUCCESS") {
+        setUserState(res.data.user)
+      }
       localStorage.setItem('user', JSON.stringify(res.data))
       console.log(res)
     }).catch(error => console.log(error))
@@ -98,8 +101,8 @@ export function Profile() {
                       register={register}
                       />
                       <div className="flex gap-1">
-                        <Button>Save</Button>
-                        <Button isRed onClick={() => setIsChanging(false)}>Cancel</Button>
+                        <Button type="submit">Save</Button>
+                        <Button type="button" isRed onClick={() => setIsChanging(false)}>Cancel</Button>
                       </div>
                   </label>
                 </form>
