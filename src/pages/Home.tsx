@@ -14,7 +14,8 @@ export function Home() {
   console.log(getUser)
 
     if(getUser.user.name.length >= 2) {
-      return navigate(`/profile/${getUser.user.name}`)
+      navigate(`/profile/${getUser.user.name}`)
+      return null
     } else {
       return (
         <div className="bg-my-blue-500 flex flex-col w-screen h-screen justify-center items-center">
