@@ -11,6 +11,7 @@ import { SignIn } from './pages/SignIn';
 import './styles/global.css'
 
 import {AppRoutes} from './routes/AppRoutes'
+import { Home } from './pages/Home';
 
 /* const router = createBrowserRouter([
   {
@@ -31,6 +32,6 @@ import {AppRoutes} from './routes/AppRoutes'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <AppRoutes></AppRoutes>
+    <Home />
   </React.StrictMode>
 )
