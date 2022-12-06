@@ -1,4 +1,4 @@
-name: Login-System
+name: Deploy
 
 on:
   push:
