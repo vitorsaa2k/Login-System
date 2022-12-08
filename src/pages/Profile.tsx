@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios"
-import { useEffect, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button } from "../components/Button"
 import { Input } from "../components/Input"
@@ -16,7 +16,7 @@ interface User {
   email: string,
   name: string,
   password: string,
-  description: string
+  description: string | FieldValues | ReactNode
 }
 
 export function Profile() {
@@ -60,7 +60,7 @@ export function Profile() {
     axios.put(`http://localhost:3000/profile/${user}`, data).then((res) => {
       setResponse(res)
       if(res.data.status === "SUCCESS") {
-        setUserState(res.data.user)
+        setUserState(prevState => ({...prevState, description: data.description}))
       }
       localStorage.setItem('user', JSON.stringify(res.data))
       console.log(res)
@@ -109,7 +109,7 @@ export function Profile() {
               ) : (
                 <div className="">
                   <Title>Description: </Title>
-                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{userState ? userState.description : ''}</button>
+                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{typeof userState.description === 'string' ? userState.description : ''}</button>
                 </div>
               )
             }
