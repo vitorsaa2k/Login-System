@@ -24,6 +24,14 @@ export function Profile() {
   const [image, setImage] = useState<string | Blob>('')
   const [response, setResponse] = useState<AxiosResponse<any, any>>()
   const {register, handleSubmit} = useForm()
+  const navigate = useNavigate()
+  const getUser = useGetCurrentUser()
+  const {user} = useParams()
+
+  /* if(getUser.user.name !== user) {
+    navigate(`/`)
+    localStorage.clear()
+  } */
 
   const [userState, setUserState] = useState<User>({
     email: '',
@@ -32,7 +40,6 @@ export function Profile() {
     description: '',
   })
 
-  const {user} = useParams()
   
   useEffect(() => {
     axios.get(`http://localhost:3000/profile/${user}`).then((response) => {
@@ -109,14 +116,14 @@ export function Profile() {
               ) : (
                 <div className="">
                   <Title>Description: </Title>
-                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{typeof userState.description === 'string' ? userState.description : ''}</button>
+                  <button onClick={() => setIsChanging(true)} className="text-black hover:text-my-blue-500 hover:underline">{typeof userState?.description === 'string' ? userState.description : ''}</button>
                 </div>
               )
             }
           </section>
           {response?.data.status === "SUCCESS" && <SUCCESS response={response?.data.message} />}
           {response?.data.status === "FAILED" && <FAILED response={response?.data.message} />}
-      </div>
+        </div>
     </div>
   )
 }

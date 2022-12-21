@@ -59,8 +59,8 @@ function DetailedUser() {
     setIsDeleting(true)
   }
 
-  function deleteAccount() {
-    axios.delete(`http://localhost:3000/profile/${getUser.user.name.length ? getUser.user.name : ''}`)
+  async function deleteAccount() {
+    await axios.delete(`http://localhost:3000/profile/${getUser.user.name.length ? getUser.user.name : ''}`)
     localStorage.clear()
     navigate('/')
   }

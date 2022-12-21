@@ -10,17 +10,34 @@ import { Text } from '../components/Text'
 import { Title } from '../components/Title'
 import { useGetCurrentUser } from '../hooks/useGetCurrentUser'
 import { FieldValues, useForm } from 'react-hook-form'
-
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 export function SignIn() {
   const navigate = useNavigate()
   const getUser = useGetCurrentUser()
+  console.log(getUser)
 
-  if(getUser.user.name.length > 0) {
+  if(getUser.message !== 'User not found' && '') {
     navigate(`/profile/${getUser.user.name}`)
   }
 
-  const {register, handleSubmit} = useForm()
+  const UserSchema = z.object({
+    email: z.string().email({
+      message: 'Invalid type of email'
+    }),
+    password: z.string().min(8, {
+      message: 'Your password must have at least 8 characters'
+    }),
+  })
+
+  const {
+    register, 
+    handleSubmit,
+    formState: {errors, isValid, isSubmitting}
+  } = useForm({
+    resolver: zodResolver(UserSchema)
+  })
 
   const [response, setResponse] = useState<AxiosResponse<any, any>>()
 
@@ -94,7 +111,9 @@ export function SignIn() {
               </label>
               <Text asChild className='text-my-blue-500 hover:cursor-pointer self-end' size='sm'><a>Forgot password</a></Text>
             </div>
-            <Button>Sign in</Button>
+            <div className='mb-5'>
+              <Button isSubmitting={isSubmitting} disabled={isSubmitting}>Sign in</Button>
+            </div>
           </form>
         </div>
       </div>

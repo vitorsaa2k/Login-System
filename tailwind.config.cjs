@@ -20,6 +20,7 @@ module.exports = {
         'my-blue': {
           400: '#4285F4',
           500: '#0089ED',
+          700: '#0063ed',
         }
       },
       fontFamily: {

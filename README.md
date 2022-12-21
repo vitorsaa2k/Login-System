@@ -5,6 +5,7 @@
 - React Router
 - Custom React Hooks
 - React Hook Forms
+- Zod
 - Tailwind
 - Axios
 - clsx
