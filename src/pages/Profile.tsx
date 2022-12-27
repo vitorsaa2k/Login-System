@@ -75,7 +75,6 @@ export function Profile() {
     setIsChanging(false)
   }
 
-  console.log(response)
 
   if(response != undefined) {
     setTimeout(() => {

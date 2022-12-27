@@ -12,9 +12,7 @@ export function Button(props: ButtonProps) {
   return (
     <button className={clsx(
       "text-my-sm px-4 py-3 font-medium text-white shadow-[0px 4px 19px rgba(119, 147, 65, 0.3)] w-full rounded-[10px] flex justify-center",
-      props.disabled ? 'bg-my-blue-700' : 'bg-my-blue-500',
-      props.isRed ? "bg-red-500 hover:bg-red-600" : "bg-my-blue-500 hover:bg-my-blue-700",
-      props.className,
+      props.isRed ? "bg-red-500 hover:bg-red-600" : `${props.disabled ? "bg-my-blue-700" : "bg-my-blue-500"} hover:bg-my-blue-700`,
     )
     }
     {...props}

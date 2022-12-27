@@ -94,7 +94,7 @@ export function SignUp() {
             </div>
           </div>
           <form onSubmit={handleSubmit(submitApi)}>
-            <label className='flex flex-col gap-3 mb-10'>
+            <label className='flex flex-col gap-3 mb-6'>
               <Text>Enter your username</Text>
 
               <Input
@@ -103,10 +103,10 @@ export function SignUp() {
                 placeholder='Username' 
                 type={'text'}
               />
-              {errors.name ? <InputVer input={`${errors.name?.message}`} type='name' />  : null}
+              {errors.name && <InputVer input={`${errors.name?.message}`} type='name' />}
 
             </label>
-            <label className='flex flex-col gap-3 mb-10'>
+            <label className='flex flex-col gap-3 mb-6'>
               <Text>Enter your email address</Text>
 
               <Input

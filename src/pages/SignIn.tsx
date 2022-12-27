@@ -12,6 +12,8 @@ import { useGetCurrentUser } from '../hooks/useGetCurrentUser'
 import { FieldValues, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { InputVer } from '../components/InputVer'
+
 
 export function SignIn() {
   const navigate = useNavigate()
@@ -32,10 +34,11 @@ export function SignIn() {
   })
 
   const {
-    register, 
+    register,
     handleSubmit,
     formState: {errors, isValid, isSubmitting}
   } = useForm({
+    mode: 'onBlur',
     resolver: zodResolver(UserSchema)
   })
 
@@ -79,7 +82,7 @@ export function SignIn() {
               </Text>
             </div>
           </div>
-          <div className='sm:gap-2 flex justify-between py-12'>
+          <div className='sm:gap-2 flex justify-between py-8'>
             <button className='bg-[#E9F1FF] py-2 px-9 flex justify-start items-center gap-5 rounded-[9px]'>
               <GoogleLogo />
               <Text size='md' className='hidden sm:block font-normal text-my-blue-500'>Google</Text>
@@ -98,6 +101,7 @@ export function SignIn() {
                 placeholder='Enter your email' 
                 type={'email'}
               />
+            {errors.email && <InputVer input={`${errors.email?.message}`} type='email' />}
             </label>
             <div className='flex flex-col mb-12'>
               <label className='flex flex-col gap-3 mb-3'>
@@ -108,16 +112,17 @@ export function SignIn() {
                   placeholder='Password' 
                   type={'password'}
                 />
+              {errors.password && <InputVer input={`${errors.password?.message}`} type='password' />}
               </label>
               <Text asChild className='text-my-blue-500 hover:cursor-pointer self-end' size='sm'><a>Forgot password</a></Text>
             </div>
             <div className='mb-5'>
-              <Button isSubmitting={isSubmitting} disabled={isSubmitting}>Sign in</Button>
+              <Button isSubmitting={isSubmitting} disabled={isSubmitting || !isValid}>Sign in</Button>
             </div>
           </form>
         </div>
       </div>
-      {response?.data.status === "FAILED" && <FAILED response={response?.data.message} />}
+      {response?.data?.status === "FAILED" && <FAILED response={response?.data?.message} />}
     </div>
   )
 }

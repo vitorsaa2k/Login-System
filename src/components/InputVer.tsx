@@ -9,7 +9,7 @@ interface InputVerProps {
 export function InputVer({type, input, setFalse}: InputVerProps) {
   if(type === 'name') {
     return (
-      <div className="text-my-xs text-red-600 fixed top-[422px] ">
+      <div className="text-my-xs text-red-600">
         {input}
       </div>
     )
@@ -17,14 +17,14 @@ export function InputVer({type, input, setFalse}: InputVerProps) {
   if(type === 'email') {
     const isValid = input.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     return (
-      <div className="text-my-xs text-red-600 fixed top-[553px] ">
+      <div className="text-my-xs text-red-600">
         {input}
       </div>
     )
   }
   if(type === 'password') {
     return (
-      <div className="text-my-xs text-red-600 fixed top-[685px] ">
+      <div className="text-my-xs text-red-600">
         {input}
       </div>
     )
