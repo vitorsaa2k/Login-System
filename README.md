@@ -1,7 +1,6 @@
 # Login-Client
 
 ## Creating an account
-![sign up gif](https://user-images.githubusercontent.com/17365161/211675169-ea8478fc-0416-4b4d-b257-1a77169529b1.gif)
 ![sign up ss_1](https://user-images.githubusercontent.com/17365161/211683843-ba52d5a8-518c-46c2-95d1-15ebf4509085.gif)
 
 
