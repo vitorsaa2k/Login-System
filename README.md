@@ -1,7 +1,7 @@
 # Login-Client
 
 ## Creating an account
-[sign up ss_2](https://user-images.githubusercontent.com/17365161/211686481-5043b36b-a65c-4ae0-90c7-b8d8602eee58.gif)
+![sign up ss_2](https://user-images.githubusercontent.com/17365161/211686481-5043b36b-a65c-4ae0-90c7-b8d8602eee58.gif)
 
 ## Changing description
 ![changing description](https://user-images.githubusercontent.com/17365161/211684634-7a5e1eda-d705-4a18-b4e9-f6fc403487cc.gif)
