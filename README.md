@@ -3,6 +3,9 @@
 ## Creating an account
 ![sign up ss_1](https://user-images.githubusercontent.com/17365161/211683843-ba52d5a8-518c-46c2-95d1-15ebf4509085.gif)
 
+## Changing description
+![changing description](https://user-images.githubusercontent.com/17365161/211684634-7a5e1eda-d705-4a18-b4e9-f6fc403487cc.gif)
+
 
 
 ## Technologies used
