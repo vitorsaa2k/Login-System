@@ -9,6 +9,10 @@
 ## Login
 ![sign up ss_3](https://user-images.githubusercontent.com/17365161/211871290-b11ada0f-0570-4f0a-a092-4c8427a4a0b0.gif)
 
+## Deleting the account
+![sign up ss_4](https://user-images.githubusercontent.com/17365161/211873405-ceb4fc2b-9c30-49a1-9f21-2de52b8a113c.gif)
+
+
 
 
 ## Technologies used
