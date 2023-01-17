@@ -1,5 +1,16 @@
 # Login-Client
 
+## Technologies used
+
+- React
+- React Router
+- Custom React Hooks
+- React Hook Forms
+- Zod
+- Tailwind
+- Axios
+- clsx
+
 ## Creating an account
 ![sign up ss_2](https://user-images.githubusercontent.com/17365161/211686481-5043b36b-a65c-4ae0-90c7-b8d8602eee58.gif)
 
@@ -15,20 +26,7 @@
 
 
 
-## Technologies used
 
-
-
-
-
-- React
-- React Router
-- Custom React Hooks
-- React Hook Forms
-- Zod
-- Tailwind
-- Axios
-- clsx
 
 ## About the project
 
