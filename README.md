@@ -1,6 +1,7 @@
 # Login-Client
 
 ## Technologies used
+
 - React
 - React Router
 - Custom React Hooks
@@ -9,6 +10,23 @@
 - Tailwind
 - Axios
 - clsx
+
+## Creating an account
+![sign up ss_2](https://user-images.githubusercontent.com/17365161/211686481-5043b36b-a65c-4ae0-90c7-b8d8602eee58.gif)
+
+## Changing description
+![changing description](https://user-images.githubusercontent.com/17365161/211684634-7a5e1eda-d705-4a18-b4e9-f6fc403487cc.gif)
+
+## Login
+![sign up ss_3](https://user-images.githubusercontent.com/17365161/211871290-b11ada0f-0570-4f0a-a092-4c8427a4a0b0.gif)
+
+## Deleting the account
+![sign up ss_4](https://user-images.githubusercontent.com/17365161/211873405-ceb4fc2b-9c30-49a1-9f21-2de52b8a113c.gif)
+
+
+
+
+
 
 ## About the project
 
