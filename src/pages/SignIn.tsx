@@ -18,7 +18,6 @@ import { InputVer } from '../components/InputVer'
 export function SignIn() {
   const navigate = useNavigate()
   const getUser = useGetCurrentUser()
-  console.log(getUser)
 
   if(getUser.message !== 'User not found' && '') {
     navigate(`/profile/${getUser.user.name}`)
@@ -45,7 +44,6 @@ export function SignIn() {
   const [response, setResponse] = useState<AxiosResponse<any, any>>()
 
   async function submitApi(data: FieldValues) {
-    console.log(data)
     await axios.post('http://localhost:3000/signin', {
       email: data.email,
       password: data.password
@@ -55,7 +53,6 @@ export function SignIn() {
         localStorage.setItem('user', JSON.stringify(res.data))
         navigate(`/profile/${res.data.user.name}`)
       }
-      console.log(res)
     }
       ).catch(err => console.log(err))
   }

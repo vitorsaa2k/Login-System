@@ -12,7 +12,6 @@ import { useGetCurrentUser } from "../hooks/useGetCurrentUser";
 export function Home() {
   const navigate = useNavigate()
   const getUser = useGetCurrentUser()
-  console.log(getUser)
 
     if(getUser.user.name.length >= 2) {
       navigate(`/profile/${getUser.user.name}`)

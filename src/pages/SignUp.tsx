@@ -52,14 +52,12 @@ export function SignUp() {
   })
 
   async function submitApi(data: FieldValues) {
-    console.log(data)
     await axios.post('http://localhost:3000/signup', {
       email: data.email,
       name: data.name,
       password: data.password
     }).then(res => {
       localStorage.setItem('user', JSON.stringify(res.data))
-      console.log(res)
       navigate(`/profile/${data.name}`)
     }).catch(err => {
       setResponse(err)
@@ -73,7 +71,6 @@ export function SignUp() {
     }, 3000)
   }
 
-  console.log(isValid)
 
   return (
     <div className='bg-my-blue-500 w-screen h-screen flex justify-center items-center'>

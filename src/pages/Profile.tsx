@@ -10,7 +10,6 @@ import { Text } from "../components/Text"
 import { Title } from "../components/Title"
 import { FieldValues, useForm } from 'react-hook-form'
 import { useGetCurrentUser } from "../hooks/useGetCurrentUser"
-import { useSaveCurrentUser } from "../hooks/useSaveCurrentUser"
 
 interface User {
   email: string,
@@ -49,20 +48,6 @@ export function Profile() {
     })
   }, [])
 
-  console.log(userState)
-
-  function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(e.target.files)
-    if (e.target.files != null) {
-      setImage(e.target.files[0])
-    }
-    const formData = new FormData()
-    formData.append('image', image)
-  axios.post('https://api.imgbb.com/1/upload?key=8f64bf7e225cfbee07ecfb8593b37608', {image: formData}).then(res => {
-    console.log(res)
-  }).catch(err => console.log(err))
-  }
-
   function submitApi(data: FieldValues) {
     axios.put(`http://localhost:3000/profile/${user}`, data).then((res) => {
       setResponse(res)
@@ -70,7 +55,6 @@ export function Profile() {
         setUserState(prevState => ({...prevState, description: data.description}))
       }
       localStorage.setItem('user', JSON.stringify(res.data))
-      console.log(res)
     }).catch(error => console.log(error))
     setIsChanging(false)
   }
